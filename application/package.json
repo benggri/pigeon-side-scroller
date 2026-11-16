@@ -10,6 +10,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.1.0",
     "next": "16.4.6",
     "pixelfx": "https://codeload.github.com/patch-gg/pixelfx/tar.gz/5294518ce7c72e48b6100a744596e0acf57f2826",
     "react": "19.3.0",
