@@ -109,13 +109,14 @@ export function render(w: World, frame: Frame, out: Uint8ClampedArray) {
   shadow(p, pl.x, Math.max(3, 8 - (GROUND_Y - pl.y) / 8));
 
   // pixelfx 효과는 화면 좌표로 옮겨서 그린다
-  const drawFx = (fx: Fx | null, x: number, y: number) => {
+  const drawFx = (fx: Fx | null, x: number, y: number, layer?: "front") => {
     if (!fx) return;
     fx.options.x = Math.round(x - cam);
     fx.options.y = Math.round(y);
-    fx.draw(frame);
+    fx.draw(frame, layer);
   };
-  for (const c of w.pickups) if (!c.taken) drawFx(c.fx, c.x, c.y + 4);
+  // coin-spin 은 원점 17px 위에 떠 있다. 바닥 그림자(back)는 빼고 동전만 그린다.
+  for (const c of w.pickups) if (!c.taken) drawFx(c.fx, c.x, c.y + 17, "front");
   for (const m of w.monsters) if (m.alive) drawFx(m.fx, m.x, m.y);
 
   p = painterFor(frame);

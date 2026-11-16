@@ -42,7 +42,7 @@ export const playerBox = (w: World): Box => {
 };
 export const obstacleBox = (o: Obstacle): Box => ({ x: o.x + 1, y: K.GROUND_Y - o.h, w: o.w - 2, h: o.h });
 export function monsterBox(m: Monster): Box {
-  if (m.type === "slime") return { x: m.x - 11, y: m.y - 15, w: 22, h: 15 };
+  if (m.type === "slime") return { x: m.x - 12, y: m.y - 18, w: 24, h: 18 };
   return { x: m.x - 8, y: m.y - 5, w: 16, h: 10 };
 }
 export const overlap = (a: Box, b: Box) => a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
@@ -180,7 +180,7 @@ function updatePickups(w: World, dt: number) {
   for (const c of w.pickups) {
     if (c.taken) continue;
     c.fx?.update(dt);
-    if (overlap(pb, { x: c.x - 5, y: c.y - 12, w: 10, h: 12 })) {
+    if (overlap(pb, { x: c.x - 7, y: c.y - 7, w: 14, h: 14 })) {
       c.taken = true;
       w.coins += 1;
       w.events.push("coin");
