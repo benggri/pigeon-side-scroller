@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Jua } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ADSENSE_CLIENT } from "@/lib/ads";
 import "./globals.css";
-
-const ADSENSE_CLIENT = "ca-pub-9245086971599023";
 
 const jua = Jua({ weight: "400", subsets: ["latin"], display: "swap" });
 
